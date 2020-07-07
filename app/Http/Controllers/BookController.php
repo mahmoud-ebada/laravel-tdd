@@ -18,4 +18,15 @@ class BookController extends Controller
         ]);
         Book::create($data);
     }
+
+    /**
+     * @param Book
+     */
+    public function update(Book $book){
+        $data = request()->validate([
+            'title' => 'required',
+            'author' => 'required'
+        ]);
+        $book->update($data);
+    }
 }
