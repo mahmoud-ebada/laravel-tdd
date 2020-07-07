@@ -33,4 +33,15 @@ class BookReservationTest extends TestCase
 
         $response->assertSessionHasErrors('title');
     }
+
+    /** @test */
+    public function an_author_is_required()
+    {
+        $response = $this->post('/books', [
+            'title' => 'Laravel TDD',
+            'author' => ''
+        ]);
+
+        $response->assertSessionHasErrors('author');
+    }
 }
